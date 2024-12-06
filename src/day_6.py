@@ -22,7 +22,7 @@ Coordinate = namedtuple("Coordinate", ["x", "y"])
 class Guard:
     def __init__(self, start):
         self.position = start
-        self.direction = "up"
+        self.direction = Direction.UP
         self.direction_order = deque(
             [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
         )
@@ -59,7 +59,7 @@ def make_grid(inputs):
         for x, cell in enumerate(row):
             if cell == Token.GUARD:
                 guard = Guard(Coordinate(x, y))
-                cell = "."
+                cell = Token.EMPTY
             grid[Coordinate(x, y)] = cell
 
     return grid, guard
@@ -83,7 +83,7 @@ def part_2(guard_path):
     inputs = read_input(6, list)
     grid, guard = make_grid(inputs)
     start = guard.position
-    visited = set([(guard.position, "up")])
+    visited = set([(guard.position, Direction.UP)])
     loop_locations = 0
 
     for coordinate in guard_path:
