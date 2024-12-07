@@ -20,6 +20,7 @@ From this repository in GitHub, you can find the code solutions. For explanation
 - Day 4: ⭐️⭐️ [code](/src/day_4.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-04)
 - Day 5: ⭐️⭐️ [code](/src/day_5.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-05)
 - Day 6: ⭐️⭐️ [code](/src/day_6.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-06)
+- Day 7: ⭐️⭐️ [code](/src/day_7.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-07)
 
 ## How to run my code
 
