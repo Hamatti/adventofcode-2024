@@ -24,6 +24,7 @@ From this repository in GitHub, you can find the code solutions. For explanation
 - Day 8: ⭐️⭐️ [code](/src/day_8.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-08)
 - Day 9: ⭐️⭐️ [code](/src/day_9.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-09)
 - Day 10: ⭐️⭐️ [code](/src/day_10.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-10)
+- Day 11: ⭐️⭐️ [code](/src/day_11.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-11)
 
 ## How to run my code
 
