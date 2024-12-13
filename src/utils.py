@@ -7,9 +7,9 @@ from typing import List, Callable
 Coordinate = namedtuple("Coordinate", ["x", "y"])
 
 
-def read_input(
-    day: int, map_fn: Callable[[str], any] = str, example: bool = False
-) -> any:
+def read_input[T](
+    day: int, map_fn: Callable[[str], T] = str, example: bool = False
+) -> List[T]:
     """
     Read puzzle input for file `../inputs/day_{day}.txt'
     and apply map_fn function to each line.
@@ -36,9 +36,9 @@ def read_input(
         sys.exit(1)
 
 
-def read_multisection_input(
-    day: int, map_fns: List[Callable[[str], any]] = None, example: bool = False
-):
+def read_multisection_input[T](
+    day: int, map_fns: List[Callable[[str], T]] = None, example: bool = False
+) -> List[T]:
     """
     Read multisection puzzle input for file `/inputs/day_{day}.txt'
     and apply transformer function to each section.

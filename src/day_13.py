@@ -12,7 +12,7 @@ Machine = namedtuple("Machine", ["A", "B", "prize"])
 Play = namedtuple("Play", ["x", "y", "cost"])
 
 
-def map_fn(section: str) -> any:
+def map_fn(section: str) -> Machine:
     lines = section.split("\n")
     a_button = re.match(re_button, lines[0]).groupdict()
     a_button = Button(a_button["button"], int(a_button["x"]), int(a_button["y"]), 3)
