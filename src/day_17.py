@@ -1,5 +1,5 @@
 from utils import read_multisection_input
-from typing import Tuple
+from typing import Tuple, List
 
 Registers = dict[str, int]
 NewPointer = int | None
@@ -13,7 +13,7 @@ def adv(registers: Registers, operand: int) -> ReturnValue:
     if operand > 3:
         value = registers[value]
     denominator = 2**value
-    registers["A"] = int(numerator / denominator)
+    registers["A"] = numerator // denominator
     return registers, None, None
 
 
@@ -56,7 +56,7 @@ def bdv(registers: Registers, operand: int) -> ReturnValue:
         value = registers[value]
     denominator = 2**value
 
-    registers["B"] = int(numerator / denominator)
+    registers["B"] = numerator // denominator
     return registers, None, None
 
 
@@ -66,7 +66,7 @@ def cdv(registers: Registers, operand: int) -> ReturnValue:
     if operand > 3:
         value = registers[value]
     denominator = 2**value
-    registers["C"] = int(numerator / denominator)
+    registers["C"] = numerator // denominator
 
     return registers, None, None
 
@@ -95,28 +95,6 @@ def process(program, registers):
     return prints
 
 
-def process_2(program, registers):
-    pointer = 0
-    prints = []
-    while pointer < len(program):
-        opcode = program[pointer]
-        operand = program[pointer + 1]
-
-        func = opcodes[opcode]
-        registers, pointer_movement, output = func(registers, operand)
-        if output is not None:
-            prints.append(output)
-        if pointer_movement is not None:
-            pointer = pointer_movement
-        else:
-            pointer = pointer + 2
-
-        if prints != program[: len(prints)]:
-            return []
-
-    return prints
-
-
 def process_simplified(A):
     output = []
     while A != 0:
@@ -138,35 +116,37 @@ def map_registers(section):
     return {"A": a, "B": b, "C": c}
 
 
-def map_program(section):
+def map_program(section) -> List[int]:
     codes = section.split(": ")[1]
     return [int(code) for code in codes.split(",")]
 
 
 def part_1():
     registers, program = read_multisection_input(17, [map_registers, map_program])
-    # output = process(program, registers)
-    output = process_simplified(registers["A"])
-    output = ",".join([str(o) for o in output])
+    output = process(program, registers)
+    output = ",".join([str(number) for number in output])
 
     print(f"Part 1: {output}")
     assert output == "5,0,3,5,7,6,1,5,4"
 
 
 def part_2():
-    registers, program = read_multisection_input(17, [map_registers, map_program])
-    output = []
-    a = 48382068
-    # a = 0
-    b = registers["B"]
-    c = registers["C"]
-    while output != program:
-        print(a)
-        registers["A"] = a
-        output = process_simplified(a)
-        a += 1
-    print(f"Part 2: {a-1}")
+    _, program = read_multisection_input(17, [map_registers, map_program])
+
+    A = 1
+    for i in range(1, len(program) + 1):
+        for a in range(A, A + (8**i)):
+            output = process_simplified(a)
+            if output == program[(-1 * i) :]:
+                A = a
+                break
+
+        A = A * 8
+
+    result = A // 8
+    print(f"Part 2: {result}")
+    assert result == 164516454365621
 
 
-# part_1()
+part_1()
 part_2()
