@@ -31,6 +31,7 @@ From this repository in GitHub, you can find the code solutions. For explanation
 - Day 15: ⭐️⭐️ [code](/src/day_15.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-15)
 - Day 16: ⭐️ [code](/src/day_16.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-16)
 - Day 17: ⭐️⭐️ [code](/src/day_17.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-17)
+- Day 18: ⭐️⭐️ [code](/src/day_18.py) : [explanation](https://hamatti.org/adventofcode/2024/Solutions/Day-18)
 
 ## How to run my code
 
